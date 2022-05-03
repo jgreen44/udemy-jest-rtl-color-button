@@ -2,7 +2,10 @@ import React from 'react';
 import './App.css';
 import {useState} from "react";
 
+export const replacePascalCaseWithSpace = (colorName: string) => {
 
+return colorName.replace(/\B([A-Z])\B/g, ' $1');
+}
 
 function App() {
     const [buttonColor, setButtonColor] = useState('red');

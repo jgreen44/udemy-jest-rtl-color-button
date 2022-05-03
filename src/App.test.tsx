@@ -1,6 +1,7 @@
 import React from 'react';
 import App from "./App";
 import {fireEvent, render, screen} from "@testing-library/react";
+import {replacePascalCaseWithSpace} from "./App";
 
 
 test('button has correct initial color', () => {
@@ -81,4 +82,19 @@ test('button is gray when disabled', () => {
     // button is red
     expect(colorButton).toHaveStyle({backgroundColor: 'red'})
 
+})
+
+// describe allows to combine tests (grouping tests)
+describe('spaces before pascal case capital letters', () => {
+    test('works for no inner capital letters', () => {
+        expect(replacePascalCaseWithSpace('Red')).toBe('Red')
+    })
+
+    test('works for on inner capital letter', () =>{
+        expect(replacePascalCaseWithSpace('MidnightBlue')).toBe('Midnight Blue')
+    })
+
+    test('work for multiple inner capital letters', () => {
+        expect(replacePascalCaseWithSpace('MediumVioletRed')).toBe('Medium Violet Red')
+    })
 })
